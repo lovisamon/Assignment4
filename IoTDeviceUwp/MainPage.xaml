@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="IoTDeviceUwp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IoTDeviceUwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="PaleGreen" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Grid.Row="0">
+            <StackPanel Margin="20,40,20,20">
+                <TextBlock Text="IoT Device" FontSize="25" HorizontalAlignment="Center"/>
+                <Button x:Name="btnSendTemp" Click="btnSendTemp_Click" Content="Send temperature" Foreground="White" Background="DarkSlateBlue" HorizontalAlignment="Center" Margin="20,20,20,20"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="Incoming messages" FontSize="20" HorizontalAlignment="Center"/>
+        <ListView x:Name="Input" Grid.Row="1" ItemsSource="{Binding BodyMessageModels}" Background="White" BorderBrush="DarkSlateBlue" Margin="20,40,20,20" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Message}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+    
+</Page>
